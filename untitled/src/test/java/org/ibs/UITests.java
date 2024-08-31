@@ -1,6 +1,5 @@
 package org.ibs;
 
-import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,15 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.sql.*;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class TestSiteFructs {
+public class UITests {
 
    private static WebDriver driver;
 
     @BeforeAll
-   static void addVegetable(){
+   static void addVegetable() throws SQLException {
         System.setProperty("webdriver.chromedriver.driver", "\\src\\test\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -33,7 +33,7 @@ public class TestSiteFructs {
 
 
     @Test
-    void addProductWithHardName() {
+    void addProductWithHardNameTest() {
 
         WebElement btnAdd = driver.findElement(By.xpath("//button[@data-target='#editModal']"));
 
@@ -62,7 +62,7 @@ public class TestSiteFructs {
     }
 
     @Test
-    void addExoticFruct() {
+    void addExoticFruitTest() {
 
         WebElement btnAdd = driver.findElement(By.xpath("//button[@data-target='#editModal']"));
 
@@ -86,6 +86,5 @@ public class TestSiteFructs {
 
         Assertions.assertEquals(addedProductName.getText(),"");
     }
-
 
     }
