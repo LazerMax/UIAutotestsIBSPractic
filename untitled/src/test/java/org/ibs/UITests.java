@@ -9,16 +9,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.sql.*;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class UITests {
 
-   private static WebDriver driver;
+    private static WebDriver driver;
 
     @BeforeAll
-   static void addVegetable() throws SQLException {
+    static void addVegetable() {
         System.setProperty("webdriver.chromedriver.driver", "\\src\\test\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -27,7 +26,7 @@ public class UITests {
     }
 
     @AfterAll
-    static void afterTests(){
+    static void afterTests() {
         driver.quit();
     }
 
@@ -58,7 +57,7 @@ public class UITests {
 
         WebElement addedProductName = driver.findElement(By.xpath("//td[text()='dghj%:*ГўвЂћвЂ“5ГђВїГђВ°ГђВІГђВ»ГђВї']"));
 
-        Assertions.assertEquals(addedProductName.getText(),"dghj%:*ГўвЂћвЂ“5ГђВїГђВ°ГђВІГђВ»ГђВї");
+        Assertions.assertEquals(addedProductName.getText(), "dghj%:*ГўвЂћвЂ“5ГђВїГђВ°ГђВІГђВ»ГђВї");
     }
 
     @Test
@@ -84,7 +83,7 @@ public class UITests {
 
         WebElement addedProductName = driver.findElement(By.xpath("//td[not(text())]"));
 
-        Assertions.assertEquals(addedProductName.getText(),"");
+        Assertions.assertEquals(addedProductName.getText(), "");
     }
 
-    }
+}

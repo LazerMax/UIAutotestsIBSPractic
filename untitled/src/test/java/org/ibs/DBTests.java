@@ -21,7 +21,7 @@ public class DBTests {
     void getAllProductsTest() throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM FOOD;");
         int count = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count = resultSet.getInt("Count(*)");
         }
         Assertions.assertTrue(count >= 4);
@@ -32,12 +32,12 @@ public class DBTests {
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM FOOD");
 
         int count1 = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count1 = resultSet.getInt("Count(*)");
         }
 
         PreparedStatement pt = connection.prepareStatement("INSERT INTO FOOD (FOOD_ID, FOOD_NAME, FOOD_TYPE, FOOD_EXOTIC) VALUES (?,?,?,?)");
-        pt.setInt(1, count1+1);
+        pt.setInt(1, count1 + 1);
         pt.setString(2, "Мандарин");
         pt.setString(3, "FRUIT");
         pt.setInt(4, 1);
@@ -46,7 +46,7 @@ public class DBTests {
         resultSet = statement.executeQuery("SELECT COUNT(*) FROM FOOD");
 
         int count2 = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count2 = resultSet.getInt("Count(*)");
         }
 
@@ -58,7 +58,7 @@ public class DBTests {
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM FOOD");
 
         int count1 = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count1 = resultSet.getInt("Count(*)");
         }
 
@@ -70,7 +70,7 @@ public class DBTests {
         resultSet = statement.executeQuery("SELECT COUNT(*) FROM FOOD");
 
         int count2 = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count2 = resultSet.getInt("Count(*)");
         }
 
